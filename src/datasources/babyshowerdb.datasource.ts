@@ -5,7 +5,7 @@ const config = {
   name: 'babyshowerdb',
   connector: 'mssql',
   server: 'localhost',
-  host: 'localhost\\EDWINDB',
+  host: 'localhost',
   port: 1433,
   user: 'edwin',
   password: 'edwin',
