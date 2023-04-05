@@ -1,14 +1,15 @@
 import {inject, lifeCycleObserver, LifeCycleObserver} from '@loopback/core';
 import {juggler} from '@loopback/repository';
 
+const port: number | undefined = parseInt(process.env.DBPORT ? process.env.DBPORT : "")
 const config = {
   name: 'db',
   connector: 'mssql',
-  host: 'srvbabyshower.database.windows.net',// better stored in an app setting such as process.env.DB_SERVER
-  port: 1433, // optional, defaults to 1433, better stored in an app setting such as process.env.DB_PORT
-  user: 'egsf', // better stored in an app setting such as process.env.DB_USER
-  password: 'Skyfire.94', // better stored in an app setting such as process.env.DB_PASSWORD
-  database: 'babyshowerdb', // better stored in an app setting such as process.env.DB_NAME
+  host: process.env.DBHOST,// better stored in an app setting such as process.env.DB_SERVER
+  port: port, // optional, defaults to 1433, better stored in an app setting such as process.env.DB_PORT
+  user: process.env.DBUSER, // better stored in an app setting such as process.env.DB_USER
+  password: process.env.DBPASSWORD, // better stored in an app setting such as process.env.DB_PASSWORD
+  database: process.env.DATABASE, // better stored in an app setting such as process.env.DB_NAME
   encrypt: true
 }
 

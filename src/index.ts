@@ -1,8 +1,10 @@
+import * as dotenv from 'dotenv';
 import {ApplicationConfig, BabyshowerBackendApplication} from './application';
-
 export * from './application';
 
-export async function main(options: ApplicationConfig = {}) {
+export default async function main(options: ApplicationConfig = {}) {
+
+  dotenv.config();
   const app = new BabyshowerBackendApplication(options);
   await app.boot();
   await app.start();
