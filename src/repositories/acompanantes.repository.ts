@@ -1,5 +1,5 @@
-import {inject, Getter} from '@loopback/core';
-import {DefaultCrudRepository, repository, BelongsToAccessor} from '@loopback/repository';
+import {Getter, inject} from '@loopback/core';
+import {BelongsToAccessor, DefaultCrudRepository, repository} from '@loopback/repository';
 import {BabyshowerdbDataSource} from '../datasources';
 import {Acompanantes, AcompanantesRelations, Invitado} from '../models';
 import {InvitadoRepository} from './invitado.repository';
@@ -13,7 +13,7 @@ export class AcompanantesRepository extends DefaultCrudRepository<
   public readonly fk_Idinvitado: BelongsToAccessor<Invitado, typeof Acompanantes.prototype.Id>;
 
   constructor(
-    @inject('datasources.babyshowerdb') dataSource: BabyshowerdbDataSource, @repository.getter('InvitadoRepository') protected invitadoRepositoryGetter: Getter<InvitadoRepository>,
+    @inject('datasources.db') dataSource: BabyshowerdbDataSource, @repository.getter('InvitadoRepository') protected invitadoRepositoryGetter: Getter<InvitadoRepository>,
   ) {
     super(Acompanantes, dataSource);
     this.fk_Idinvitado = this.createBelongsToAccessorFor('fk_Idinvitado', invitadoRepositoryGetter,);

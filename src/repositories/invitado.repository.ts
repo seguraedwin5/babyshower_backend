@@ -9,7 +9,7 @@ export class InvitadoRepository extends DefaultCrudRepository<
   InvitadoRelations
 > {
   constructor(
-    @inject('datasources.babyshowerdb') dataSource: BabyshowerdbDataSource,
+    @inject('datasources.db') dataSource: BabyshowerdbDataSource,
   ) {
     super(Invitado, dataSource);
   }
